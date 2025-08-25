@@ -940,9 +940,9 @@ export const testimonials: TTestimonial[] = [
   {
     testimonial:
       "Yasir is an exceptional developer who consistently delivers high-quality solutions with innovative AI integration.",
-    name: "Sara Wilson",
+    name: "Neha Sharma",
     designation: "CTO",
-    company: "TechCorp",
+    company: "TechSolutions India",
     image: "https://randomuser.me/api/portraits/women/4.jpg",
   },
   {
