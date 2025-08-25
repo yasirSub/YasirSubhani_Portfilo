@@ -6,7 +6,7 @@ import { ProjectsPage } from "./components";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="relative z-0 bg-primary">
         <Navbar />
         <Routes>
