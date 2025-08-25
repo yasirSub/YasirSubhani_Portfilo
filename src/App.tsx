@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { Navbar, Footer, FloatingButtons } from "./components";
 import { Hero, About, Experience, Tech, Works, Feedbacks, Contact } from "./components";
 import { AboutPage } from "./components";
@@ -6,7 +6,7 @@ import { ProjectsPage } from "./components";
 
 function App() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <HashRouter>
       <div className="relative z-0 bg-primary">
         <Navbar />
         <Routes>
@@ -43,7 +43,7 @@ function App() {
         <Footer />
         <FloatingButtons />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
