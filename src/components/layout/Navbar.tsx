@@ -109,7 +109,7 @@ const Navbar = () => {
             >
               <motion.img 
                 src="/images.png" 
-                alt="YS Logo" 
+                alt="Logo" 
                 className={`object-contain rounded-full shadow-lg transition-all duration-500 ${
                   scrolled ? "h-8 w-8" : "h-10 w-10"
                 }`}
@@ -127,19 +127,6 @@ const Navbar = () => {
                 />
               )}
             </motion.div>
-            <motion.p 
-              className={`font-bold transition-all duration-500 ${
-                scrolled 
-                  ? "text-[18px] text-[#915EFF]" 
-                  : "text-[20px] text-white"
-              } group-hover:text-[#915EFF]`}
-              animate={{ 
-                x: scrolled ? [0, 3, 0] : 0
-              }}
-              transition={{ duration: 0.3 }}
-            >
-              {config.html.title}
-            </motion.p>
           </Link>
         </motion.div>
 
