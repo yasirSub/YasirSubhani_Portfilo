@@ -11,20 +11,31 @@ const Navbar = () => {
   const [active, setActive] = useState<string | null>();
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-        setActive("");
-      }
+      const scrollTop = window.scrollY || 0;
+      const docHeight = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight,
+        document.body.clientHeight,
+        document.documentElement.clientHeight
+      );
+      const windowHeight = window.innerHeight || 1;
+      const totalScrollable = Math.max(docHeight - windowHeight, 1);
+      const progress = Math.min(Math.max(scrollTop / totalScrollable, 0), 1);
+
+      setScrollProgress(progress);
+      setScrolled(scrollTop > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Initialize on mount
+    handleScroll();
 
     const navbarHighlighter = () => {
       const sections = document.querySelectorAll("section[id]");
@@ -32,9 +43,9 @@ const Navbar = () => {
       sections.forEach((current) => {
         const sectionId = current.getAttribute("id");
         // @ts-ignore
-        const sectionHeight = current.offsetHeight;
-        const sectionTop =
-          current.getBoundingClientRect().top - sectionHeight * 0.2;
+        const sectionHeight = current.offsetHeight as number;
+        const rect = current.getBoundingClientRect();
+        const sectionTop = rect.top - sectionHeight * 0.2;
 
         if (sectionTop < 0 && sectionTop + sectionHeight > 0) {
           setActive(sectionId);
@@ -42,20 +53,18 @@ const Navbar = () => {
       });
     };
 
-    window.addEventListener("scroll", navbarHighlighter);
+    window.addEventListener("scroll", navbarHighlighter, { passive: true });
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("scroll", navbarHighlighter);
+      window.removeEventListener("scroll", handleScroll as EventListener);
+      window.removeEventListener("scroll", navbarHighlighter as EventListener);
     };
   }, []);
 
   const handleNavClick = (navId: string) => {
     if (location.pathname !== '/') {
-      // If not on home page, navigate to home first
       window.location.href = `/#${navId}`;
     } else {
-      // If on home page, scroll to section
       document.getElementById(navId)?.scrollIntoView({ behavior: 'smooth' });
     }
     setActive(navId);
@@ -259,12 +268,9 @@ const Navbar = () => {
       {scrolled && (
         <motion.div
           initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
+          animate={{ scaleX: scrollProgress }}
           className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] origin-left"
-          style={{
-            transformOrigin: 'left',
-            scaleX: Math.min(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight), 1)
-          }}
+          style={{ transformOrigin: 'left' }}
         />
       )}
     </motion.nav>
