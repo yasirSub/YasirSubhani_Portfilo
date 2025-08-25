@@ -6,6 +6,8 @@ A modern, interactive 3D portfolio website built with React, Three.js, and Frame
 
 **Visit the live website:** [https://yasirsub.github.io/YasirSubhani_Portfilo/](https://yasirsub.github.io/YasirSubhani_Portfilo/)
 
+**Status: Deploying...** 🚀
+
 ## 🚀 Features
 
 - **3D Interactive Elements** - Built with Three.js and React Three Fiber
