@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
@@ -29,8 +29,9 @@ const Computers: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
   );
 };
 
-const ComputersCanvas = () => {
-  const [isMobile, setIsMobile] = useState(false);
+const ComputersCanvas = ({ onError }: { onError?: () => void }) => {
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [hasError, setHasError] = useState<boolean>(false);
 
   useEffect(() => {
     // Add a listener for changes to the screen size
@@ -53,10 +54,34 @@ const ComputersCanvas = () => {
     };
   }, []);
 
+  // Handle errors and notify parent component
+  useEffect(() => {
+    if (hasError && onError) {
+      onError();
+    }
+  }, [hasError, onError]);
+
+  // Error boundary for 3D component
+  if (hasError) {
+    return (
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="text-center text-white">
+          <h3 className="text-xl font-semibold mb-2">3D Model Loading</h3>
+          <p className="text-gray-300">Please wait while the 3D content loads...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       {isMobile ? (
-        <></>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center text-white">
+            <h3 className="text-xl font-semibold mb-2">Mobile View</h3>
+            <p className="text-gray-300">3D content optimized for desktop</p>
+          </div>
+        </div>
       ) : (
         <Canvas
           frameloop="demand"
@@ -64,6 +89,7 @@ const ComputersCanvas = () => {
           dpr={[1, 2]}
           camera={{ position: [20, 3, 5], fov: 25 }}
           gl={{ preserveDrawingBuffer: true }}
+          onError={() => setHasError(true)}
         >
           <Suspense fallback={<CanvasLoader />}>
             <OrbitControls

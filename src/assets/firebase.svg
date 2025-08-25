@@ -1,0 +1,10 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="100" height="100" fill="#1E1E1E"/>
+  
+  <!-- Firebase Logo -->
+  <path d="M50 10L30 40L50 35L70 40L50 10Z" fill="#FFCA28"/>
+  <path d="M30 40L50 35L50 90L30 40Z" fill="#FF5722"/>
+  <path d="M50 35L70 40L50 90L50 35Z" fill="#4CAF50"/>
+  <path d="M50 35L30 40L70 40L50 35Z" fill="#FF9800"/>
+</svg>

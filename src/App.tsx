@@ -1,45 +1,50 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Navbar, Footer, FloatingButtons } from "./components";
+import { Hero, About, Experience, Tech, Works, Feedbacks, Contact } from "./components";
+import { AboutPage } from "./components";
+import { ProjectsPage } from "./components";
 
-import {
-  About,
-  Contact,
-  Experience,
-  Feedbacks,
-  Hero,
-  Navbar,
-  Tech,
-  Works,
-  StarsCanvas,
-} from "./components";
-import { useEffect } from "react";
-import { config } from "./constants/config";
-
-const App = () => {
-  useEffect(() => {
-    if (document.title !== config.html.title) {
-      document.title = config.html.title;
-    }
-  }, []);
-
+function App() {
   return (
     <BrowserRouter>
-      <div className="bg-primary relative z-0">
-        <div className="bg-hero-pattern bg-cover bg-center bg-no-repeat">
-          <Navbar />
-          <Hero />
-        </div>
-        <About />
-        <Experience />
-        <Tech />
-        <Works />
-        <Feedbacks />
-        <div className="relative z-0">
-          <Contact />
-          <StarsCanvas />
-        </div>
+      <div className="relative z-0 bg-primary">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
+                <section id="home">
+                  <Hero />
+                </section>
+              </div>
+              <section id="about">
+                <About />
+              </section>
+              <section id="work">
+                <Experience />
+              </section>
+              <section id="skills">
+                <Tech />
+              </section>
+              <section id="projects">
+                <Works />
+              </section>
+              <section id="feedbacks">
+                <Feedbacks />
+              </section>
+              <section id="contact">
+                <Contact />
+              </section>
+            </>
+          } />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+        </Routes>
+        <Footer />
+        <FloatingButtons />
       </div>
     </BrowserRouter>
   );
-};
+}
 
 export default App;

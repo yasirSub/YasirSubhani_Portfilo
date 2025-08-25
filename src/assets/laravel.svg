@@ -1,0 +1,11 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="100" height="100" fill="#1E1E1E"/>
+  
+  <!-- Laravel Logo -->
+  <path d="M50 10L20 30V70L50 90L80 70V30L50 10Z" fill="#FF2D20"/>
+  <path d="M50 20L30 35V65L50 80L70 65V35L50 20Z" fill="white"/>
+  <path d="M50 25L35 37V62L50 74L65 62V37L50 25Z" fill="#FF2D20"/>
+  <path d="M50 30L40 40V58L50 68L60 58V40L50 30Z" fill="white"/>
+  <path d="M50 35L45 42V55L50 62L55 55V42L50 35Z" fill="#FF2D20"/>
+</svg>

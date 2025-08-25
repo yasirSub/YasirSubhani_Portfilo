@@ -1,10 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { projects } from "../../constants";
 import { github, close } from "../../assets";
 import { TProject } from "../../types";
-import { SectionWrapper } from "../../hoc";
 import {
   installer2,
   installer3,
@@ -229,122 +227,86 @@ const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.2 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true, amount: 0.25 }}
-      className="rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-300 cursor-pointer relative"
-      style={{
-        transformStyle: 'preserve-3d',
-        perspective: '1000px'
-      }}
+      className="bg-black-100 p-5 rounded-2xl sm:w-[400px] w-full group hover:scale-105 transition-all duration-300 cursor-pointer"
       onClick={() => onProjectClick({ name, description, tags, image, sourceCodeLink })}
     >
-      {/* Project Image - Portrait Style */}
-      <div className="relative w-full h-48 overflow-hidden rounded-2xl">
+      {/* Project Image Container - Fixed aspect ratio for landscape */}
+      <div className="relative w-full aspect-video overflow-hidden rounded-2xl">
         <img
           src={image}
           alt={name}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          className="w-full h-full object-contain rounded-2xl group-hover:scale-110 transition-transform duration-500"
         />
+        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 rounded-2xl" />
         
         {/* Overlay with project info */}
-        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex flex-col justify-end p-4">
-          <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-            <h3 className="text-white font-bold text-lg mb-2">{name}</h3>
-            <p className="text-gray-300 text-sm line-clamp-2">{description}</p>
+        <div className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          <div className="bg-black bg-opacity-80 p-3 rounded-xl">
+            <h3 className="text-white font-semibold text-sm mb-1">{name}</h3>
+            <p className="text-gray-300 text-xs line-clamp-2">{description}</p>
           </div>
-        </div>
-
-        {/* GitHub Link - Top Right */}
-        <div className="absolute top-3 right-3">
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={(e) => {
-              e.stopPropagation();
-              window.open(sourceCodeLink, "_blank");
-            }}
-            className="black-gradient w-8 h-8 rounded-full flex justify-center items-center cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-            <img
-              src={github}
-              alt="github"
-              className="w-4 h-4 object-contain"
-            />
-          </motion.div>
-        </div>
-
-        {/* Technology Tags - Top Left */}
-        <div className="absolute top-3 left-3 flex flex-wrap gap-1">
-          {tags.slice(0, 2).map((tag, tagIndex) => (
-            <span
-              key={tag.name}
-              className={`text-xs px-2 py-1 rounded-full ${tag.color} bg-opacity-80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300`}
-              style={{ transitionDelay: `${tagIndex * 100}ms` }}
-            >
-              #{tag.name}
-            </span>
-          ))}
         </div>
       </div>
 
-      {/* Project Content - Compact */}
-      <div className="p-4">
-        <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#915EFF] transition-colors duration-300">
+      <div className="mt-5">
+        <h3 className="text-white font-bold text-[20px] group-hover:text-[#915EFF] transition-colors duration-300">
           {name}
         </h3>
-        <p className="text-secondary text-sm leading-relaxed line-clamp-2 mb-3">
+        <p className="mt-2 text-secondary text-[14px] leading-relaxed line-clamp-3">
           {description}
         </p>
+      </div>
 
-        {/* Technology Tags */}
-        <div className="flex flex-wrap gap-2 mb-3">
-          {tags.slice(0, 3).map((tag, tagIndex) => (
-            <motion.span
-              key={tag.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: tagIndex * 0.1 }}
-              className={`text-xs px-2 py-1 rounded-full ${tag.color} bg-opacity-20 backdrop-blur-sm`}
-            >
-              #{tag.name}
-            </motion.span>
-          ))}
-          {tags.length > 3 && (
-            <span className="text-xs px-2 py-1 rounded-full bg-gray-600 text-gray-300">
-              +{tags.length - 3}
-            </span>
-          )}
-        </div>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {tags.slice(0, 3).map((tag) => (
+          <span
+            key={tag.name}
+            className={`text-[12px] px-2 py-1 rounded-full ${tag.color} bg-opacity-20 backdrop-blur-sm`}
+          >
+            #{tag.name}
+          </span>
+        ))}
+        {tags.length > 3 && (
+          <span className="text-[12px] px-2 py-1 rounded-full bg-gray-600 text-gray-300">
+            +{tags.length - 3} more
+          </span>
+        )}
+      </div>
 
-        {/* Action Button */}
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={(e) => {
-            e.stopPropagation();
-            window.open(sourceCodeLink, "_blank");
-          }}
-          className="w-full bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white py-2 px-4 rounded-lg text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
-        >
-          View Source Code
-        </motion.button>
+      {/* Click hint */}
+      <div className="mt-4 text-center">
+        <span className="text-[#915EFF] text-sm font-medium">Click to view details</span>
       </div>
     </motion.div>
   );
 };
 
-const Works = () => {
-  const navigate = useNavigate();
+const ProjectsPage = () => {
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [showAll, setShowAll] = useState(false);
   const [selectedProject, setSelectedProject] = useState<TProject | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  // Show only first 3 projects in the main section
-  const displayedProjects = projects.slice(0, 3);
 
-  const handleViewAllProjects = () => {
-    // Navigate to the separate projects page
-    navigate('/projects');
-  };
+  const categories = [
+    "all", 
+    "flutter", 
+    "react-native", 
+    "ai", 
+    "python", 
+    "mobile", 
+    "web", 
+    "expo"
+  ];
+  
+  const filteredProjects = selectedCategory === "all" 
+    ? projects 
+    : projects.filter(project => 
+        project.tags.some(tag => tag.name.toLowerCase().includes(selectedCategory.toLowerCase()))
+      );
+
+  const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 12);
 
   const handleProjectClick = (project: TProject) => {
     setSelectedProject(project);
@@ -357,91 +319,126 @@ const Works = () => {
   };
 
   return (
-    <>
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true, amount: 0.25 }}
-        className="text-center mb-16"
-      >
-        <motion.h2 
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] mb-4"
-        >
-          My work
-        </motion.h2>
-        <motion.p 
+    <div className="w-full min-h-screen bg-primary py-20">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Header */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-white text-2xl font-bold mb-4"
+          transition={{ duration: 0.8, delay: 0.1 }}
+          viewport={{ once: true, amount: 0.25 }}
+          className="text-center mb-16"
         >
-          Projects.
-        </motion.p>
-        <motion.p 
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] mb-4"
+          >
+            All Projects
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider mb-4"
+          >
+            Explore my complete portfolio of work
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-white text-lg max-w-2xl mx-auto"
+          >
+            Click on any project to view detailed information, screenshots, and access source code
+          </motion.p>
+        </motion.div>
+
+        {/* Category Filter */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider"
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true, amount: 0.25 }}
+          className="flex flex-wrap justify-center gap-4 mb-12"
         >
-          Each project is a unique piece of development
-        </motion.p>
-      </motion.div>
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => {
+                setSelectedCategory(category);
+                setShowAll(false);
+              }}
+              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                selectedCategory === category
+                  ? "bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] text-white shadow-lg scale-105"
+                  : "bg-gray-800 text-gray-300 hover:bg-gray-700 hover:scale-105"
+              }`}
+            >
+              {category.charAt(0).toUpperCase() + category.slice(1)} 
+              {category !== "all" && ` (${filteredProjects.filter(project => 
+                project.tags.some(tag => tag.name.toLowerCase().includes(category.toLowerCase()))
+              ).length})`}
+            </button>
+          ))}
+        </motion.div>
 
-      {/* Projects Description */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-        viewport={{ once: true, amount: 0.25 }}
-        className="w-full flex justify-center mb-16"
-      >
-        <p className="mt-2 text-secondary text-[17px] max-w-3xl leading-[30px] text-center">
-          Following projects showcases my skills and experience through real-world examples of my work. 
-          Each project reflects my ability to solve complex problems, work with different technologies, 
-          and manage projects effectively.
-        </p>
-      </motion.div>
-
-      {/* Projects Grid - Portrait Cards */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.0 }}
-        viewport={{ once: true, amount: 0.25 }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
-      >
-        {displayedProjects.map((project, index) => (
-          <ProjectCard 
-            key={`project-${index}`} 
-            index={index} 
-            {...project} 
-            onProjectClick={handleProjectClick}
-          />
-        ))}
-      </motion.div>
-
-      {/* View More Button */}
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.2 }}
-        viewport={{ once: true, amount: 0.25 }}
-        className="text-center mt-16"
-      >
-        <motion.button
-          whileHover={{ scale: 1.05, y: -2 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={handleViewAllProjects}
-          className="bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+        {/* Projects Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true, amount: 0.25 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12"
         >
-          View All Projects ({projects.length})
-        </motion.button>
-      </motion.div>
+          {displayedProjects.map((project, index) => (
+            <ProjectCard 
+              key={`project-${index}`} 
+              index={index} 
+              {...project}
+              onProjectClick={handleProjectClick}
+            />
+          ))}
+        </motion.div>
+
+        {/* View More Button */}
+        {filteredProjects.length > 12 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            viewport={{ once: true, amount: 0.25 }}
+            className="text-center"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowAll(!showAll)}
+              className="bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              {showAll ? "Show Less" : `View More (${filteredProjects.length - 12} more)`}
+            </motion.button>
+          </motion.div>
+        )}
+
+        {/* Project Count */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          viewport={{ once: true, amount: 0.25 }}
+          className="text-center mt-16 text-secondary"
+        >
+          <p className="text-lg">
+            Showing {displayedProjects.length} of {filteredProjects.length} projects
+            {selectedCategory !== "all" && ` in ${selectedCategory}`}
+          </p>
+          <p className="text-sm mt-2 text-gray-500">
+            Total: {projects.length} projects in portfolio
+          </p>
+        </motion.div>
+      </div>
 
       {/* Project Modal */}
       {selectedProject && (
@@ -451,8 +448,8 @@ const Works = () => {
           onClose={closeModal}
         />
       )}
-    </>
+    </div>
   );
 };
 
-export default SectionWrapper(Works, "works");
+export default ProjectsPage;

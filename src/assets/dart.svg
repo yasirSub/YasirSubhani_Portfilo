@@ -1,0 +1,10 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="100" height="100" fill="#1E1E1E"/>
+  
+  <!-- Dart Logo -->
+  <path d="M20 20L50 50L80 20H20Z" fill="#00D4AA"/>
+  <path d="M20 20L50 50L20 80V20Z" fill="#00D4AA"/>
+  <path d="M50 50L80 20L80 80L50 50Z" fill="#00D4AA"/>
+  <path d="M35 35L50 50L35 65L20 50L35 35Z" fill="#00D4AA"/>
+</svg>

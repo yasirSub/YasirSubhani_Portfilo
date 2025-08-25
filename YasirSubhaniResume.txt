@@ -1,0 +1,118 @@
+YASIR SUBHANI
+Web & Android App Developer
+
+yasir.subhani123@gmail.com
+08271819813
+linkedin.com/in/yasirsubhani
+Kolkata, India
+
+Summary
+======
+I am a Web & Android App Developer with expertise in Flutter, AI automation, and full-stack development. I excel in integrating AI tools, optimizing databases, and building scalable applications. With a solid foundation in programming languages and a growing portfolio of applications and projects, I am passionate about creating efficient and user-friendly digital solutions
+
+
+Experience
+======
+Mobile Developer
+MSL Techno Solutions Pvt. Ltd
+05/2023 - 12/2023
+Noida, India
+A technology solutions company focusing on mobile application development
+ - Developed a health-focused Android app using Flutter/Dart
+ - Designed a user-friendly interface and implemented real-time database features
+
+Full-Stack Developer
+S.O. Infotech Pvt. Ltd
+05/2022 - 04/2023
+Noida, India
+A firm specializing in software development and IT services
+ - Built scalable web applications with AI automation & API integration
+ - Developed business solutions with secure database architecture
+ - Optimized performance & security for better user experience
+
+Web Developer
+Freizeitmedia
+01/2020 - 02/2022
+Noida, India
+A digital agency focused on web development and design
+ - Worked on WordPress-based projects and optimized website functionality
+ - Focused on UI/UX design and backend performance improvements
+
+
+Education
+======
+BCA
+Amity University
+09/2020 - 07/2023
+India
+
+High School
+High School Sabour
+06/2018 - 06/2018
+India
+
+High School
+Millia Convent English School
+04/2014 - 04/2015
+India
+
+
+Achievements
+======
+Achievement in AI Development
+Developed multiple AI-powered automation tools including an AI WhatsApp Auto-Reply Bot and an AI Content Generator using Gemini
+
+
+Skills
+======
+ - Adobe Photoshop
+ - Dart
+ - ECommerce
+ - Figma
+ - Flutter
+ - GitHub
+ - Google Firebase
+ - HTML
+ - Java
+ - JavaScript
+ - Photoshop
+ - PHP
+ - Python
+ - SQL
+ - WordPress
+
+
+Projects
+======
+WeSync
+01/2023 - 01/1970
+Kolkata, India
+A productivity and relationship management app designed to optimize daily tasks and personal relationships
+ - AI-powered task, shopping, and time management system
+ - Integrated reminders, rewards, and AI-driven conflict resolution
+
+TradeShield
+01/2023 - 01/1970
+Kolkata, India
+A trading and money management app aimed at enhancing trading efficiency and financial insights
+ - Financial tracking for traders with AI analytics
+ - Secure and intuitive user experience for financial insights
+
+AI Auto-Reply Bot for WhatsApp
+01/2023 - 01/1970
+Kolkata, India
+An AI auto-reply bot designed for WhatsApp to enhance business communication
+ - Developed an AI chatbot that replies to messages using Ollama & AI models
+ - Built using Python & WhatsApp Business API for fast and reliable responses
+
+Freelance Websites
+01/2023 - 01/1970
+Kolkata, India
+Freelance work entails various projects in website development
+
+
+Interests
+======
+Hobbies
+Enjoys playing guitar and music, exploring AI tools, coding, and problem-solving
+

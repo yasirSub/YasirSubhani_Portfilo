@@ -1,0 +1,11 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="100" height="100" fill="#1E1E1E"/>
+  
+  <!-- Photoshop Logo -->
+  <rect x="20" y="20" width="60" height="60" rx="8" fill="#001D26"/>
+  <rect x="25" y="25" width="50" height="50" rx="4" fill="#31A8FF"/>
+  <path d="M35 40H45C47.5 40 49 41.5 49 44C49 46.5 47.5 48 45 48H40V52H35V40ZM40 45H45C45.5 45 46 44.5 46 44C46 43.5 45.5 43 45 43H40V45Z" fill="white"/>
+  <path d="M50 40H55V42H52V45H55V47H52V50H50V40Z" fill="white"/>
+  <path d="M60 40H65C67.5 40 69 41.5 69 44C69 46.5 67.5 48 65 48H62V52H60V40ZM62 45H65C65.5 45 66 44.5 66 44C66 43.5 65.5 43 65 43H62V45Z" fill="white"/>
+</svg>
