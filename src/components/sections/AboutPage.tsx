@@ -395,6 +395,46 @@ const AboutPage = () => {
           </div>
         </motion.div>
 
+        {/* Beyond Code Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.4 }}
+          viewport={{ once: true, amount: 0.25 }}
+          className="text-center mb-12"
+        >
+          <motion.h3
+            animate={{ y: [0, -5, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="text-white text-2xl font-bold mb-4"
+          >
+            Beyond Code
+          </motion.h3>
+          <motion.p
+            animate={{ opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="text-secondary mb-6"
+          >
+            Explore my other passions and interests outside of development
+          </motion.p>
+          <motion.button
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 10px 30px rgba(34, 197, 94, 0.4)"
+            }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => window.location.href = '/beyond-code'}
+            className="group bg-transparent border-2 border-green-500 text-green-400 hover:bg-green-500 hover:text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 transform backdrop-blur-sm"
+          >
+            <span className="flex items-center justify-center gap-2">
+              Explore Beyond Code
+              <svg className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+            </span>
+          </motion.button>
+        </motion.div>
+
         {/* Enhanced Contact CTA with Floating Animation */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

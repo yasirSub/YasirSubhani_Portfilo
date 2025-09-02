@@ -31,9 +31,15 @@ import {
   supabase,
   photoshop,
   premierePro,
+  adobeIllustrator,
+  adobeAfterEffects,
+  adobeXd,
   cursor,
   vscode,
   androidStudio,
+  python,
+  flutter,
+  reactNative,
   // App Images
   installer1,
   installer2,
@@ -87,20 +93,20 @@ export const services: TService[] = [
     icon: mobile,
   },
   {
-    title: "AI Developer",
-    icon: backend,
-  },
-  {
     title: "Full-Stack Developer",
     icon: creator,
   },
   {
-    title: "Laravel Developer",
-    icon: laravel,
+    title: "UI/UX Designer",
+    icon: photoshop,
   },
   {
-    title: "Creative Designer",
-    icon: photoshop,
+    title: "Video Editor",
+    icon: premierePro,
+  },
+  {
+    title: "AI Developer",
+    icon: backend,
   },
 ];
 
@@ -834,7 +840,8 @@ export const projects: TProject[] = [
   },
 ];
 
-export const technologies: TTechnology[] = [
+// Frontend Development
+export const frontendTechnologies: TTechnology[] = [
   {
     name: "HTML 5",
     icon: html,
@@ -846,10 +853,6 @@ export const technologies: TTechnology[] = [
   {
     name: "JavaScript",
     icon: javascript,
-  },
-  {
-    name: "TypeScript",
-    icon: typescript,
   },
   {
     name: "React JS",
@@ -864,20 +867,36 @@ export const technologies: TTechnology[] = [
     icon: tailwind,
   },
   {
+    name: "Three JS",
+    icon: threejs,
+  },
+];
+
+// Mobile Development
+export const mobileTechnologies: TTechnology[] = [
+  {
     name: "Flutter",
-    icon: dart, // We'll use Dart icon for Flutter for now
+    icon: flutter,
   },
   {
     name: "Dart",
     icon: dart,
   },
   {
+    name: "React Native",
+    icon: reactNative,
+  },
+];
+
+// Backend Development
+export const backendTechnologies: TTechnology[] = [
+  {
     name: "Node JS",
     icon: nodejs,
   },
   {
     name: "Python",
-    icon: backend, // Using backend icon for Python since we don't have a specific Python icon
+    icon: python,
   },
   {
     name: "MongoDB",
@@ -895,10 +914,10 @@ export const technologies: TTechnology[] = [
     name: "Supabase",
     icon: supabase,
   },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
+];
+
+// Design & Creative Tools
+export const designTools: TTechnology[] = [
   {
     name: "Photoshop",
     icon: photoshop,
@@ -908,20 +927,33 @@ export const technologies: TTechnology[] = [
     icon: premierePro,
   },
   {
-    name: "git",
-    icon: git,
+    name: "Adobe Illustrator",
+    icon: adobeIllustrator,
+  },
+  {
+    name: "Adobe After Effects",
+    icon: adobeAfterEffects,
+  },
+  {
+    name: "Adobe XD",
+    icon: adobeXd,
   },
   {
     name: "Figma",
     icon: figma,
   },
+];
+
+// Development Tools
+export const developmentTools: TTechnology[] = [
+  {
+    name: "git",
+    icon: git,
+  },
   {
     name: "Docker",
     icon: docker,
   },
-];
-
-export const tools: TTechnology[] = [
   {
     name: "Cursor",
     icon: cursor,
@@ -936,6 +968,45 @@ export const tools: TTechnology[] = [
   },
 ];
 
+// Trading & Finance Technologies
+export const tradingTechnologies: TTechnology[] = [
+  {
+    name: "TypeScript",
+    icon: typescript,
+  },
+  {
+    name: "Python",
+    icon: python,
+  },
+  {
+    name: "JavaScript",
+    icon: javascript,
+  },
+  {
+    name: "Node JS",
+    icon: nodejs,
+  },
+  {
+    name: "MongoDB",
+    icon: mongodb,
+  },
+  {
+    name: "Firebase",
+    icon: firebase,
+  },
+];
+
+// Legacy technologies array for backward compatibility
+export const technologies: TTechnology[] = [
+  ...frontendTechnologies,
+  ...mobileTechnologies,
+  ...backendTechnologies,
+  ...designTools,
+  ...developmentTools,
+];
+
+
+
 export const testimonials: TTestimonial[] = [
   {
     testimonial:
@@ -948,9 +1019,9 @@ export const testimonials: TTestimonial[] = [
   {
     testimonial:
       "Working with Yasir on our mobile app was a great experience. His Flutter expertise and attention to detail are outstanding.",
-    name: "Chris Brown",
+    name: "Rahul Patel",
     designation: "Product Manager",
-    company: "MobileTech",
+    company: "MobileTech India",
     image: "https://randomuser.me/api/portraits/men/5.jpg",
   },
   {

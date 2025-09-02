@@ -1,6 +1,6 @@
-import { BallCanvas } from "../canvas";
+import IconBall from "../canvas/IconBall";
 import { SectionWrapper } from "../../hoc";
-import { tools } from "../../constants";
+import { developmentTools } from "../../constants";
 
 const Tools = () => {
   return (
@@ -17,10 +17,8 @@ const Tools = () => {
       
       {/* Tools Icons */}
       <div className="flex flex-row flex-wrap justify-center gap-10">
-        {tools.map((tool) => (
-          <div className="h-28 w-28" key={tool.name}>
-            <BallCanvas icon={tool.icon} />
-          </div>
+        {developmentTools.map((tool) => (
+          <IconBall key={tool.name} icon={tool.icon} name={tool.name} />
         ))}
       </div>
     </div>

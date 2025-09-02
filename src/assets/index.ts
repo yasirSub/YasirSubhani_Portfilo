@@ -43,10 +43,17 @@ import firebase from "./firebase.svg";
 import supabase from "./supabase.svg";
 import photoshop from "./photoshop.svg";
 import premierePro from "./premiere-pro.svg";
+import adobeIllustrator from "./adobe-illustrator.svg";
+import adobeAfterEffects from "./adobe-after-effects.svg";
+import adobeXd from "./adobe-xd.svg";
 import cursor from "./cursor.svg";
+import tradeShieldLogo from "./trade-shield-logo.png";
 import vscode from "./vscode.svg";
 import androidStudio from "./android-studio.svg";
 import python from "./python.svg";
+import flutter from "./flutter.svg";
+import reactNative from "./react-native.svg";
+import expo from "./expo.svg";
 import ai from "./ai.svg";
 import machineLearning from "./machine-learning.svg";
 import logo from "./logo.svg";
@@ -84,10 +91,17 @@ export {
   supabase,
   photoshop,
   premierePro,
+  adobeIllustrator,
+  adobeAfterEffects,
+  adobeXd,
   cursor,
+  tradeShieldLogo,
   vscode,
   androidStudio,
   python,
+  flutter,
+  reactNative,
+  expo,
   ai,
   machineLearning,
   logo,

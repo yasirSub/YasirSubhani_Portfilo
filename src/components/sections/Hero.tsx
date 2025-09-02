@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { styles } from "../../constants/styles";
+import ParticlesBackground from "../canvas/ParticlesBackground";
 
 const Hero = () => {
   const handleCall = () => {
@@ -7,268 +8,290 @@ const Hero = () => {
   };
 
   return (
-    <section className={`relative mx-auto h-screen w-full overflow-hidden`}>
-      {/* Enhanced Background Layer */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a2e] to-[#16213e]" />
+    <section className="relative mx-auto min-h-screen w-full overflow-hidden flex items-center">
+      {/* Animated Particles Background */}
+      <ParticlesBackground />
       
-      {/* Enhanced Decorative Background Elements */}
-      <div className="absolute inset-0 z-1">
-        {/* Animated grid pattern */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(145, 94, 255, 0.4) 1px, transparent 0)`,
-            backgroundSize: '60px 60px',
-            animation: 'gridMove 20s linear infinite'
-          }} />
-        </div>
-        
-        {/* Enhanced floating accent elements */}
+      {/* Enhanced Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-800/80 to-slate-900/90" />
+      
+      {/* Responsive Grid Pattern */}
+      <div className="absolute inset-0 opacity-5 sm:opacity-10">
+        <div className="absolute inset-0 animate-pulse" style={{
+          backgroundImage: `linear-gradient(rgba(59,130,246,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.3) 1px, transparent 1px)`,
+          backgroundSize: '40px 40px'
+        }} />
+      </div>
+
+      {/* Responsive Floating Elements */}
+      <div className="absolute inset-0 overflow-hidden">
         <motion.div 
+          className="absolute top-10 left-4 sm:top-20 sm:left-20 w-1 h-1 sm:w-2 sm:h-2 bg-blue-400 rounded-full"
           animate={{ 
-            y: [0, -20, 0],
-            opacity: [0.1, 0.2, 0.1]
+            scale: [1, 1.5, 1],
+            opacity: [0.5, 1, 0.5]
           }}
-          transition={{ 
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-20 right-20 w-40 h-40 bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] rounded-full opacity-20 blur-3xl" 
+          transition={{ duration: 2, repeat: Infinity }}
         />
         <motion.div 
+          className="absolute top-20 right-8 sm:top-40 sm:right-32 w-2 h-2 sm:w-3 sm:h-3 bg-purple-400 rounded-full"
           animate={{ 
-            y: [0, 20, 0],
-            opacity: [0.1, 0.15, 0.1]
+            scale: [1, 1.2, 1],
+            opacity: [0.7, 1, 0.7]
           }}
-          transition={{ 
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-          className="absolute bottom-20 left-20 w-32 h-32 bg-gradient-to-r from-[#7B4FD9] to-[#915EFF] rounded-full opacity-20 blur-3xl" 
+          transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
         />
-        
-        {/* Additional floating elements */}
         <motion.div 
+          className="absolute bottom-20 left-8 sm:bottom-40 sm:left-32 w-1 h-1 sm:w-2 sm:h-2 bg-green-400 rounded-full"
           animate={{ 
-            x: [0, 15, 0],
-            opacity: [0.05, 0.1, 0.05]
+            y: [0, -10, 0],
+            opacity: [0.6, 1, 0.6]
           }}
-          transition={{ 
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
+          transition={{ duration: 2.5, repeat: Infinity, delay: 1 }}
+        />
+        <motion.div 
+          className="absolute top-32 right-4 sm:top-60 sm:right-20 w-1 h-1 sm:w-2 sm:h-2 bg-cyan-400 rounded-full"
+          animate={{ 
+            scale: [1, 1.3, 1],
+            opacity: [0.4, 1, 0.4]
           }}
-          className="absolute top-1/3 left-1/4 w-24 h-24 bg-[#915EFF] rounded-full opacity-10 blur-2xl" 
+          transition={{ duration: 2.8, repeat: Infinity, delay: 1.5 }}
         />
       </div>
 
-      {/* Main Content - Enhanced Foreground Layer */}
-      <div className="relative z-10 h-full flex items-center pt-16">
-        <div
-          className={`mx-auto max-w-6xl ${styles.paddingX} flex flex-row items-center gap-6 w-full`}
-        >
-          {/* Enhanced Left Side - Purple Dot & Line */}
-          <div className="mt-5 flex flex-col items-center justify-center">
+      {/* Main Content Container */}
+      <div className="relative z-10 w-full">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+          
+            {/* Left Side - Professional Indicator (Desktop Only) */}
             <motion.div 
-              animate={{ 
-                scale: [1, 1.2, 1],
-                boxShadow: [
-                  "0 0 0 0 rgba(145, 94, 255, 0.7)",
-                  "0 0 0 20px rgba(145, 94, 255, 0)",
-                  "0 0 0 0 rgba(145, 94, 255, 0)"
-                ]
-              }}
-              transition={{ 
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="h-5 w-5 rounded-full bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] shadow-lg" 
-            />
-            <div className="violet-gradient h-32 w-1 sm:h-64 rounded-full" />
-          </div>
-
-          {/* Enhanced Center - Text Content */}
-          <div className="flex-1 max-w-2xl">
-            <motion.div
+              className="hidden lg:flex flex-col items-center justify-center"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="mb-2"
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <span className="text-[#915EFF] text-base font-medium tracking-wider uppercase">
-                Welcome to my portfolio
-              </span>
+              <motion.div 
+                className="h-4 w-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 shadow-lg"
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  boxShadow: [
+                    "0 0 0 rgba(59, 130, 246, 0.4)",
+                    "0 0 20px rgba(59, 130, 246, 0.6)",
+                    "0 0 0 rgba(59, 130, 246, 0.4)"
+                  ]
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <div className="h-32 w-1 bg-gradient-to-b from-blue-500 via-cyan-500 to-transparent rounded-full" />
             </motion.div>
 
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
+            {/* Main Content */}
+            <motion.div 
+              className="flex-1 max-w-4xl text-center lg:text-left"
+              initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className={`${styles.heroHeadText} text-white leading-tight`}
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Hi, I'm{" "}
-              <span className="bg-gradient-to-r from-[#915EFF] via-[#7B4FD9] to-[#915EFF] bg-clip-text text-transparent animate-pulse">
-                Yasir Subhani
-              </span>
-            </motion.h1>
-            
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-              className={`${styles.heroSubText} mt-3 text-white-100 leading-relaxed`}
-            >
-              Building the Future with{" "}
-              <span className="text-[#915EFF] font-semibold">Code & AI</span>
-            </motion.h2>
+              {/* Professional Badge */}
+              <motion.div 
+                className="mb-6 sm:mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                <span className="inline-flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-400/30 rounded-full text-blue-300 text-xs sm:text-sm font-medium backdrop-blur-sm">
+                  <motion.div 
+                    className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-400 rounded-full"
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                      opacity: [0.7, 1, 0.7]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                  <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                    Full-Stack Developer & AI Specialist
+                  </span>
+                </span>
+              </motion.div>
 
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              className="mt-4 text-secondary text-[16px] max-w-2xl leading-[28px] font-light"
-            >
-              Web & Android App Developer specializing in Flutter, AI automation, and Full-stack development. 
-              I excel in integrating AI tools, optimizing databases, and building scalable applications.
-            </motion.p>
-
-            {/* Enhanced Project Stats - More Compact */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-              className="mt-6 flex flex-wrap gap-6"
-            >
-              {[
-                { number: "25+", label: "Projects", icon: "🚀" },
-                { number: "4+", label: "Years", icon: "⭐" },
-                { number: "15+", label: "Clients", icon: "💼" }
-              ].map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8 + index * 0.1 }}
-                  className="text-center group"
+              {/* Main Heading */}
+              <motion.h1 
+                className="font-black text-white text-[36px] sm:text-[50px] md:text-[60px] lg:text-[70px] xl:text-[90px] leading-[1.1] sm:leading-[1.2] lg:leading-[1.1] mb-4 sm:mb-6"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                Hi, I'm{" "}
+                <motion.span 
+                  className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent font-bold"
+                  animate={{ 
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+                  }}
+                  transition={{ duration: 3, repeat: Infinity }}
                 >
-                  <div className="flex items-center justify-center gap-2 mb-1">
-                    <span className="text-xl">{stat.icon}</span>
-                    <div className="text-[#915EFF] text-2xl font-bold group-hover:scale-110 transition-transform duration-300">
+                  Yasir Subhani
+                </motion.span>
+              </motion.h1>
+              
+              {/* Subtitle */}
+              <motion.h2 
+                className="text-gray-300 font-medium text-[18px] sm:text-[22px] md:text-[26px] lg:text-[28px] xl:text-[32px] leading-[1.3] sm:leading-[1.4] lg:leading-[1.3] mb-6 sm:mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.0 }}
+              >
+                Building the Future with{" "}
+                <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent font-semibold">
+                  Code & AI
+                </span>
+              </motion.h2>
+
+              {/* Professional Description */}
+              <motion.p 
+                className="text-gray-300 text-base sm:text-lg lg:text-xl max-w-3xl leading-relaxed mb-8 sm:mb-10 font-light mx-auto lg:mx-0"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+              >
+                Web & Android App Developer specializing in Flutter, AI automation, and Full-stack development. 
+                I excel in integrating AI tools, optimizing databases, and building scalable applications.
+              </motion.p>
+
+              {/* Professional Stats */}
+              <motion.div 
+                className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-10"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.4 }}
+              >
+                {[
+                  { number: "25+", label: "Projects", color: "from-blue-500 to-cyan-500" },
+                  { number: "4+", label: "Years Exp", color: "from-green-500 to-emerald-500" },
+                  { number: "15+", label: "Clients", color: "from-purple-500 to-pink-500" }
+                ].map((stat, index) => (
+                  <motion.div 
+                    key={stat.label} 
+                    className="text-center group"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 1.6 + index * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <div className={`bg-gradient-to-r ${stat.color} bg-clip-text text-transparent text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300`}>
                       {stat.number}
                     </div>
-                  </div>
-                  <div className="text-secondary text-xs font-medium uppercase tracking-wider">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Enhanced Action Buttons - More Compact */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
-              className="mt-6 flex flex-col sm:flex-row gap-4"
-            >
-              <motion.button
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -2,
-                  boxShadow: "0 15px 30px rgba(145, 94, 255, 0.3)"
-                }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/projects'}
-                className="group bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 shadow-xl hover:shadow-[0_15px_30px_rgba(145,94,255,0.3)] transform hover:-translate-y-1 border-0 relative overflow-hidden"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  <span>View Projects</span>
-                  <motion.span
-                    animate={{ x: [0, 3, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                    className="text-lg"
-                  >
-                    →
-                  </motion.span>
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#7B4FD9] to-[#915EFF] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.button>
-              
-              <motion.button
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -2,
-                  boxShadow: "0 15px 30px rgba(145, 94, 255, 0.2)"
-                }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handleCall}
-                className="group bg-transparent border-2 border-[#915EFF] text-[#915EFF] hover:bg-[#915EFF] hover:text-white px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 shadow-xl hover:shadow-[0_15px_30px_rgba(145,94,255,0.2)] transform hover:-translate-y-1 relative overflow-hidden"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  <span>Call Me</span>
-                  <motion.span
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="text-lg"
-                  >
-                    📞
-                  </motion.span>
-                </span>
-                <div className="absolute inset-0 bg-[#915EFF] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.button>
-            </motion.div>
-
-            {/* Social Links - More Compact */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-              className="mt-6 flex items-center gap-4"
-            >
-              <span className="text-secondary text-xs font-medium">Follow me:</span>
-              <div className="flex gap-3">
-                {[
-                  { icon: "🐙", label: "GitHub", link: "https://github.com" },
-                  { icon: "💼", label: "LinkedIn", link: "https://linkedin.com" },
-                  { icon: "🐦", label: "Twitter", link: "https://twitter.com" }
-                ].map((social) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.2, y: -2 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="text-xl hover:text-[#915EFF] transition-colors duration-300 cursor-pointer"
-                    title={social.label}
-                  >
-                    {social.icon}
-                  </motion.a>
+                    <div className="text-gray-500 text-xs sm:text-sm font-medium group-hover:text-gray-300 transition-colors duration-300">
+                      {stat.label}
+                    </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
+
+              {/* Professional Action Buttons */}
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-8 sm:mb-10"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.8 }}
+              >
+                <motion.button
+                  onClick={() => window.location.href = '/projects'}
+                  className="group bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="flex items-center justify-center gap-2">
+                    View Projects
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
+                </motion.button>
+                
+
+                
+                <motion.button
+                  onClick={handleCall}
+                  className="group bg-transparent border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 transform backdrop-blur-sm"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="flex items-center justify-center gap-2">
+                    Contact Me
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  </span>
+                </motion.button>
+              </motion.div>
+
+              {/* Professional Social Links */}
+              <motion.div 
+                className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 2.0 }}
+              >
+                <span className="text-gray-500 text-sm font-medium">Connect with me:</span>
+                <div className="flex gap-4 sm:gap-6">
+                  {[
+                    { icon: "GitHub", link: "https://github.com", color: "text-gray-400 hover:text-white" },
+                    { icon: "LinkedIn", link: "https://linkedin.com", color: "text-gray-400 hover:text-blue-400" },
+                    { icon: "Twitter", link: "https://twitter.com", color: "text-gray-400 hover:text-blue-500" }
+                  ].map((social, index) => (
+                    <motion.a
+                      key={social.icon}
+                      href={social.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${social.color} transition-all duration-300 font-medium text-sm hover:scale-110 transform`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 2.2 + index * 0.1 }}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {social.icon}
+                    </motion.a>
+                  ))}
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator - More Compact */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
-        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10"
+      {/* Enhanced Scroll Indicator */}
+      <motion.div 
+        className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 2.5 }}
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center text-secondary"
+        <motion.div 
+          className="flex flex-col items-center text-gray-400 group cursor-pointer"
+          whileHover={{ scale: 1.05 }}
         >
-          <span className="text-xs mb-1">Scroll Down</span>
-          <div className="w-0.5 h-6 bg-gradient-to-b from-[#915EFF] to-transparent" />
+          <span className="text-xs sm:text-sm mb-2 sm:mb-3 font-medium group-hover:text-blue-400 transition-colors duration-300">
+            Scroll Down
+          </span>
+          <motion.div 
+            className="w-0.5 h-8 sm:h-12 bg-gradient-to-b from-blue-500 via-cyan-500 to-transparent rounded-full"
+            animate={{ 
+              scaleY: [1, 1.2, 1],
+              opacity: [0.7, 1, 0.7]
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+          <motion.div 
+            className="w-0.5 h-4 sm:h-6 bg-gradient-to-b from-cyan-500 to-transparent rounded-full mt-1 sm:mt-2"
+            animate={{ 
+              scaleY: [1, 1.3, 1],
+              opacity: [0.5, 1, 0.5]
+            }}
+            transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+          />
         </motion.div>
       </motion.div>
     </section>

@@ -1,14 +1,13 @@
-<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect x="0" y="0" width="100" height="100" fill="#1E1E1E"/>
-  
-  <!-- Premiere Pro Logo -->
-  <rect x="20" y="20" width="60" height="60" rx="8" fill="#2D2D2D"/>
-  <rect x="25" y="25" width="50" height="50" rx="4" fill="#EA77FF"/>
-  <path d="M35 35H45C47.5 35 49 36.5 49 39C49 41.5 47.5 43 45 43H40V50H35V35ZM40 40H45C45.5 40 46 39.5 46 39C46 38.5 45.5 38 45 38H40V40Z" fill="white"/>
-  <path d="M50 35H55V37H52V40H55V42H52V45H55V47H52V50H50V35ZM52 40H55V42H52V40Z" fill="white"/>
-  <path d="M60 35H65C67.5 35 69 36.5 69 39C69 41.5 67.5 43 65 43H62V50H60V35ZM62 40H65C65.5 40 66 39.5 66 39C66 38.5 65.5 38 65 38H62V40Z" fill="white"/>
-  <path d="M35 50H40V52H37V55H40V57H37V60H35V50Z" fill="white"/>
-  <path d="M42 50H47V52H44V55H47V57H44V60H42V50Z" fill="white"/>
-  <path d="M49 50H54V52H51V55H54V57H51V60H49V50Z" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="pr-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EA77FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#CC44DD;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="16" fill="url(#pr-gradient)"/>
+  <path d="M32 32h64v64H32z" fill="none" stroke="white" stroke-width="2"/>
+  <text x="64" y="70" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Premiere</text>
+  <text x="64" y="90" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Pro</text>
+  <path d="M40 40h48v8H40z" fill="white" opacity="0.2"/>
 </svg>
